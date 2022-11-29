@@ -1,6 +1,7 @@
 public class ReverseStr {
 
     static void reverse(char str[], int start, int end) {
+        System.out.println("reverse:  " + start + ":" + end);
         char tmp;
         while (start <= end)
         {
@@ -12,8 +13,12 @@ public class ReverseStr {
         }
     }
 
-    static char[] reverseWords(char[] s)
+    static void reverseWords(char[] s)
     {
+        // reverse entire String
+        reverse(s, 0, s.length - 1);
+        System.out.println(s);
+
         int start = 0;
         for (int end = 0; end < s.length; end++)
         {
@@ -21,17 +26,13 @@ public class ReverseStr {
             {
                 // reverse word from start to before space
                 reverse(s, start, end - 1);
+                System.out.println(s);
                 start = end + 1;
             }
         }
 
         // reverse last word
         reverse(s, start, s.length - 1);
-
-        // reverse entire String
-        reverse(s, 0, s.length - 1);
-
-        return s;
     }
 
     // test driver
@@ -47,7 +48,7 @@ public class ReverseStr {
 
         // TEST #2 reverse words in a phrase in-place
         char[] rs2 = s.toCharArray();
-        rs2 = reverseWords(rs2);
+        reverseWords(rs2);
         String reversedWords = String.valueOf(rs2);
         System.out.println(reversedWords);
     }
